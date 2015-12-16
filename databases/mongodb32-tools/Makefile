@@ -21,7 +21,10 @@ GH_TAGNAME=	17a5573
 OPTIONS_DEFINE=	SSL SASL
 OPTIONS_DEFAULT=SSL
 
-SSL_USE=	openssl=yes
+SSL_USE=	openssl=yes my_tags=ssl
+SSL_CPPFLAGS=	-I${LOCALBASE}/include/openssl
+SSL_LDFLAGS=	-lssl -lcrypto
+SASL_USE=	my_tags=sasl
 SASL_LIB_DEPENDS+=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
 
 .include <bsd.port.options.mk>
@@ -29,18 +32,8 @@ SASL_LIB_DEPENDS+=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-.if ${PORT_OPTIONS:MSSL}
-MY_TAGS_ARGS+=	ssl
-CPPFLAGS+=	-I${LOCALBASE}/include/openssl
-LDFLAGS+=	-lssl -lcrypto
-.endif
-
-.if ${PORT_OPTIONS:MSASL}
-MY_TAGS_ARGS+=	sasl
-.endif
-
-.if defined(MY_TAGS_ARGS)
-MY_TAGS=	-tags "${MY_TAGS_ARGS}"
+.if defined(USE_MY_TAGS)
+MY_TAGS=	-tags "${USE_MY_TAGS}"
 .endif
 
 ONLY_FOR_ARCHS=	i386 amd64
@@ -63,7 +56,7 @@ do-build:
 		${WRKSRC}/${x}/main/${x}.go
 .endfor
 
-do-install:
+do-install-DOCS-on:
 .for x in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${x} ${STAGEDIR}${PREFIX}/bin/
 .endfor
