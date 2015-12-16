@@ -25,7 +25,7 @@ SSL_USE=	openssl=yes my_tags=ssl
 SSL_CPPFLAGS=	-I${LOCALBASE}/include/openssl
 SSL_LDFLAGS=	-lssl -lcrypto
 SASL_USE=	my_tags=sasl
-SASL_LIB_DEPENDS+=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
+SASL_LIB_DEPENDS=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
 
 .include <bsd.port.options.mk>
 
