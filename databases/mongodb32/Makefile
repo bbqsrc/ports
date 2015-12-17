@@ -1,5 +1,5 @@
-# Created by: Mirko Zinn <mail@derzinn.de>
-# $FreeBSD: head/databases/mongodb/Makefile 383915 2015-04-13 13:30:04Z amdmi3 $
+# Created by: Brendan Molloy <brendan+freebsd@bbqsrc.net>
+# $FreeBSD$
 
 PORTNAME=	mongodb32
 PORTVERSION=	3.2.0
@@ -24,14 +24,17 @@ ONLY_FOR_ARCHS_REASON=	"not yet ported to anything other than i386 and amd64"
 
 OPTIONS_DEFINE=	SSL SASL TEST
 OPTIONS_DEFAULT=SSL
-TEST_DESC=	Add support for running regression test
 
-SSL_USES=	openssl=yes
+SSL_USE=	openssl=yes
 SSL_MAKE_ARGS=	--ssl
 SASL_MAKE_ARGS=	--use-sasl-client
 SASL_LIB_DEPENDS=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
+TEST_DESC=	Add support for running unit tests (VERY SLOW)
+TEST_BUILD_DEPENDS =\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3.11:${PORTSDIR}/devel/py-yaml\
+		${PYTHON_PKGNAMEPREFIX}pymongo>=3.0:${PORTSDIR}/databases/pymongo
 
-USES=		cpe execinfo scons
+USES=		cpe execinfo python:build scons
 MAKE_ARGS=	--prefix=${STAGEDIR}${PREFIX} \
 		--use-system-pcre --use-system-snappy \
 		--release
@@ -44,21 +47,20 @@ USE_RC_SUBR=	mongod
 .include <bsd.port.options.mk>
 
 ALL_TARGET=	core
-
-#post-patch:
-#	@${REINPLACE_CMD} 's/\["-O3"\]/"${CXXFLAGS}"/' \
-#		${WRKSRC}/SConstruct
+TEST_TARGET=	unittests
 
 post-install:
 .for f in mongo mongod mongoperf mongos mongosniff
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${f}
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${f}
 .endfor
 
-#.if ${PORT_OPTIONS:MTEST}
-#test: build-depends build
-#	@cd ${BUILD_WRKSRC} && ${SETENV} ${MAKE_ENV} \
-#		${MAKE_CMD} ${_MAKE_JOBS} ${MAKE_ARGS} ${TEST_TARGET}
-#.endif
+.if ${PORT_OPTIONS:MTEST}
+test: build-depends build
+	@cd ${BUILD_WRKSRC} && ${SETENV} ${MAKE_ENV} \
+		${MAKE_CMD} ${_MAKE_JOBS} ${MAKE_ARGS} ${TEST_TARGET} &&\
+		${PYTHON_CMD} ${BUILD_WRKSRC}/buildscripts/resmoke.py\
+		--suites=unittests --jobs=${MAKE_JOBS_NUMBER}
+.endif
 
 PORTSCOUT=	limitw:1,even
 
