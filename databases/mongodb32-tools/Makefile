@@ -45,21 +45,26 @@ post-patch:
 	@cd ${WRKSRC} ; ${MKDIR} ${WRKSRC}/.gopath/src/github.com/${GH_ACCOUNT} ; \
 		${LN} -sf ${WRKSRC} ${WRKSRC}/.gopath/src/github.com/${GH_ACCOUNT}/${GH_PROJECT}
 
+MAKE_CMD=	${LOCALBASE}/bin/go build
+MAKE_ENV=	CGO_CPPFLAGS="${CPPFLAGS}"\
+			CGO_CFLAGS="${CFLAGS}"\
+			CGO_LDFLAGS="${LDFLAGS}"\
+			GOPATH=${WRKSRC}/.gopath:${WRKSRC}/vendor
+
 do-build:
 .for x in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog
-	${SETENV} CGO_CPPFLAGS="${CPPFLAGS}"\
-		CGO_CFLAGS="${CFLAGS}"\
-		CGO_LDFLAGS="${LDFLAGS}"\
-		GOPATH=${WRKSRC}/.gopath:${WRKSRC}/vendor go build\
+	${SETENV} ${MAKE_ENV} ${MAKE_CMD}\
 		-o ${WRKSRC}/bin/${x} ${MY_TAGS}\
 		-ldflags "-X github.com/${GH_ACCOUNT}/${GH_PROJECT}/common/options.Gitspec=${GH_TAGNAME}"\
 		${WRKSRC}/${x}/main/${x}.go
 .endfor
 
-do-install-DOCS-on:
+do-install:
 .for x in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${x} ${STAGEDIR}${PREFIX}/bin/
 .endfor
+
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for x in LICENSE.md README.md THIRD-PARTY-NOTICES
 	${INSTALL_MAN} ${WRKSRC}/${x} ${STAGEDIR}${DOCSDIR}
