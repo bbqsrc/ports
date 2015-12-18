@@ -21,9 +21,6 @@ USES=		cpe python:3.2+
 USE_OPENSSL=	yes
 USE_PYTHON=	distutils autoplist
 
-#post-extract:
-#	@echo "version = '${PORTVERSION}'" > ${WRKSRC}/borg/_version.py
-
 post-install:
 .for l in chunker compress crypto hashindex platform_freebsd
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/borg/${l}.so
