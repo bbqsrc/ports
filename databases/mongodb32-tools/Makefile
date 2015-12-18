@@ -16,7 +16,6 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/go:${PORTSDIR}/lang/go
 USE_GITHUB=	yes
 GH_ACCOUNT=	mongodb
 GH_PROJECT=	mongo-tools
-GH_TAGNAME=	17a5573
 
 OPTIONS_DEFINE=	SSL SASL
 OPTIONS_DEFAULT=SSL
@@ -26,8 +25,6 @@ SSL_CPPFLAGS=	-I${LOCALBASE}/include/openssl
 SSL_LDFLAGS=	-lssl -lcrypto
 SASL_USE=	my_tags=sasl
 SASL_LIB_DEPENDS=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
-
-.include <bsd.port.options.mk>
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
