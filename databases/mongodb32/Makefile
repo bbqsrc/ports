@@ -3,7 +3,7 @@
 
 PORTNAME=	mongodb32
 PORTVERSION=	3.2.0
-DISTVERSIONPREFIX= r
+DISTVERSIONPREFIX=	r
 CATEGORIES=	databases net
 MASTER_SITES=	https://fastdl.mongodb.org/src/ \
 		http://fastdl.mongodb.org/src/ \
@@ -30,6 +30,7 @@ OPTIONS_DEFAULT=SSL
 
 SASL_LIB_DEPENDS=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
 SASL_MAKE_ARGS=	--use-sasl-client
+
 SSL_USE=	openssl=yes
 SSL_MAKE_ARGS=	--ssl
 

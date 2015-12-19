@@ -21,32 +21,23 @@ OPTIONS_DEFINE=	SSL SASL
 OPTIONS_DEFAULT=SSL
 
 SSL_USE=	openssl=yes my_tags=ssl
-SSL_CPPFLAGS=	-I${LOCALBASE}/include/openssl
-SSL_LDFLAGS=	-lssl -lcrypto
+
 SASL_USE=	my_tags=sasl
 SASL_LIB_DEPENDS=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
-
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
-
-.if defined(USE_MY_TAGS)
-MY_TAGS=	-tags "${USE_MY_TAGS}"
-.endif
 
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	"not yet ported to anything other than i386 and amd64"
 
 STRIP=		# Stripping can break go binaries
 
+MAKE_CMD=	${LOCALBASE}/bin/go build
+MAKE_ENV=	GOPATH=${WRKSRC}/.gopath:${WRKSRC}/vendor
+
+MY_TAGS=	-tags "${USE_MY_TAGS}"
+
 post-patch:
 	@cd ${WRKSRC} ; ${MKDIR} ${WRKSRC}/.gopath/src/github.com/${GH_ACCOUNT} ; \
 		${LN} -sf ${WRKSRC} ${WRKSRC}/.gopath/src/github.com/${GH_ACCOUNT}/${GH_PROJECT}
-
-MAKE_CMD=	${LOCALBASE}/bin/go build
-MAKE_ENV=	CGO_CPPFLAGS="${CPPFLAGS}"\
-			CGO_CFLAGS="${CFLAGS}"\
-			CGO_LDFLAGS="${LDFLAGS}"\
-			GOPATH=${WRKSRC}/.gopath:${WRKSRC}/vendor
 
 do-build:
 .for x in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog
@@ -56,7 +47,7 @@ do-build:
 		${WRKSRC}/${x}/main/${x}.go
 .endfor
 
-do-install:
+do-install-DOCS-in:
 .for x in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${x} ${STAGEDIR}${PREFIX}/bin/
 .endfor
