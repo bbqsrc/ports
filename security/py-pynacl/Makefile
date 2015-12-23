@@ -14,16 +14,17 @@ COMMENT=	Python binding to the Networking and Cryptography (NaCl) library
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
 LIB_DEPENDS=	libsodium.so:${PORTSDIR}/security/libsodium
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cffi>0:${PORTSDIR}/devel/py-cffi
 
 USES=		python:2.7+
 USE_PYTHON=	distutils autoplist
 
-post-build:
-	@${RM} -r ${WRKSRC}/build/temp.*
+post-install:
+	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/nacl/_lib/*.so
 
-#post-install:
-#	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/nacl/*.so
+do-test:
+	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} py.test tests)
 
 .include <bsd.port.mk>
