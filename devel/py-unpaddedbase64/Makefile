@@ -17,7 +17,12 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	matrix-org
 GH_PROJECT=	python-unpaddedbase64
 
-USES=		python
+TEST_DEPENDS=	tox:${PORTSDIR}/devel/py-tox
+
+USES=		python:2.7+
 USE_PYTHON=	distutils autoplist
+
+do-test:
+	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} tox -e py${PYTHON_SUFFIX})
 
 .include <bsd.port.mk>

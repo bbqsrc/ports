@@ -13,7 +13,7 @@ COMMENT=	Matrix Angular SDK
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		python:2.7+
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>
