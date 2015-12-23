@@ -30,7 +30,10 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}frozendict>=0.4:${PORTSDIR}/devel/py-frozend
 		${PYTHON_PKGNAMEPREFIX}ujson>0:${PORTSDIR}/devel/py-ujson \
 		${PYTHON_PKGNAMEPREFIX}blist>0:${PORTSDIR}/devel/py-blist \
 		${PYTHON_PKGNAMEPREFIX}pysaml2>0:${PORTSDIR}/security/py-pysaml2 \
-		${PYTHON_PKGNAMEPREFIX}pymacaroons-pynacl>0:${PORTSDIR}/security/py-pymacaroons-pynacl
+		${PYTHON_PKGNAMEPREFIX}pymacaroons-pynacl>0:${PORTSDIR}/security/py-pymacaroons-pynacl \
+		${PYTHON_PKGNAMEPREFIX}simplejson>0:${PORTSDIR}/devel/py-simplejson \
+		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
+		${PYTHON_PKGNAMEPREFIX}matrix-angular-sdk>0:${PORTSDIR}/devel/py-matrix-angular-sdk
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	matrix-org
