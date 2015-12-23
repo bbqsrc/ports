@@ -13,6 +13,8 @@ COMMENT=	Matrix protocol reference homeserver
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}virtualenv>0:${PORTSDIR}/devel/py-virtualenv \
+		${PYTHON_PKGNAMEPREFIX}tox>0:${PORTSDIR}/devel/py-tox
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}frozendict>=0.4:${PORTSDIR}/devel/py-frozendict \
 		${PYTHON_PKGNAMEPREFIX}unpaddedbase64>=1.0.1:${PORTSDIR}/devel/py-unpaddedbase64 \
 		${PYTHON_PKGNAMEPREFIX}canonicaljson>=1.0.0:${PORTSDIR}/devel/py-canonicaljson \
@@ -41,5 +43,9 @@ GH_PROJECT=	synapse
 
 USES=		python:2.7
 USE_PYTHON=	distutils autoplist
+
+# Skip running python packaging and other dist tests
+do-test:
+	@cd ${WRKSRC} && ${PYTHON_CMD} setup.py test -a "-epy27"
 
 .include <bsd.port.mk>
