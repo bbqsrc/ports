@@ -8,7 +8,7 @@ MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net
-COMMENT=	enables your code run as a daemon process on Unix-like systems
+COMMENT=	Enables code to run as a daemon process on Unix-like systems
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE

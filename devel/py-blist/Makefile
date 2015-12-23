@@ -8,7 +8,7 @@ MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net
-COMMENT=	a drop-in replacement with better performance for large lists
+COMMENT=	Drop-in list replacement with better performance for large lists
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE

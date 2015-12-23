@@ -8,7 +8,7 @@ MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net
-COMMENT=	An immutable dictionary
+COMMENT=	Immutable dictionary implementation for Python
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt

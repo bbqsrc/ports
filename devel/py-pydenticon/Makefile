@@ -8,7 +8,7 @@ MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net
-COMMENT=	Library for generating identicons. An enhanced port of Sigil.
+COMMENT=	Library for generating identicons - an enhanced port of Sigil
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE

@@ -13,13 +13,13 @@ COMMENT=	Sign JSON with Ed25519 signatures
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	matrix-org
-GH_PROJECT=	python-signedjson
-
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pynacl>=0.3.0:${PORTSDIR}/security/py-pynacl \
 			${PYTHON_PKGNAMEPREFIX}unpaddedbase64>=1.0.1:${PORTSDIR}/devel/py-unpaddedbase64 \
 			${PYTHON_PKGNAMEPREFIX}canonicaljson>=1.0.0:${PORTSDIR}/devel/py-canonicaljson
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	matrix-org
+GH_PROJECT=	python-signedjson
 
 USES=		python
 USE_PYTHON=	distutils autoplist
