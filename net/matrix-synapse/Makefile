@@ -17,20 +17,20 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}frozendict>=0.4:${PORTSDIR}/devel/py-frozend
 		${PYTHON_PKGNAMEPREFIX}unpaddedbase64>=1.0.1:${PORTSDIR}/devel/py-unpaddedbase64 \
 		${PYTHON_PKGNAMEPREFIX}canonicaljson>=1.0.0:${PORTSDIR}/devel/py-canonicaljson \
 		${PYTHON_PKGNAMEPREFIX}signedjson>=1.0.0:${PORTSDIR}/security/py-signedjson \
-		${PYTHON_PKGNAMEPREFIX}nacl>=0.3.0:${PORTSDIR}/security/py-pynacl \
+		${PYTHON_PKGNAMEPREFIX}pynacl>=0.3.0:${PORTSDIR}/security/py-pynacl \
 		${PYTHON_PKGNAMEPREFIX}service_identity>=1.0.0:${PORTSDIR}/security/py-service_identity \
 		${PYTHON_PKGNAMEPREFIX}twisted>=15.1.0:${PORTSDIR}/devel/py-twisted \
-		${PYTHON_PKGNAMEPREFIX}OpenSSL>=0.14:${PORTSDIR}/security/py-openssl \
+		${PYTHON_PKGNAMEPREFIX}openssl>=0.14:${PORTSDIR}/security/py-openssl \
 		${PYTHON_PKGNAMEPREFIX}yaml>0:${PORTSDIR}/devel/py-yaml \
 		${PYTHON_PKGNAMEPREFIX}pyasn1>0:${PORTSDIR}/devel/py-pyasn1 \
 		${PYTHON_PKGNAMEPREFIX}daemonize>0:${PORTSDIR}/devel/py-daemonize \
 		${PYTHON_PKGNAMEPREFIX}bcrypt>0:${PORTSDIR}/security/py-bcrypt \
-		${PYTHON_PKGNAMEPREFIX}PIL>0:${PORTSDIR}/graphics/py-pillow \
+		${PYTHON_PKGNAMEPREFIX}pillow>0:${PORTSDIR}/graphics/py-pillow \
 		${PYTHON_PKGNAMEPREFIX}pydenticon>0:${PORTSDIR}/devel/py-pydenticon \
 		${PYTHON_PKGNAMEPREFIX}ujson>0:${PORTSDIR}/devel/py-ujson \
 		${PYTHON_PKGNAMEPREFIX}blist>0:${PORTSDIR}/devel/py-blist \
-		${PYTHON_PKGNAMEPREFIX}saml2>0:${PORTSDIR}/devel/py-pysaml2 \
-		${PYTHON_PKGNAMEPREFIX}pymacaroons>0:${PORTSDIR}/security/py-pymacaroons-pynacl
+		${PYTHON_PKGNAMEPREFIX}pysaml2>0:${PORTSDIR}/security/py-pysaml2 \
+		${PYTHON_PKGNAMEPREFIX}pymacaroons-pynacl>0:${PORTSDIR}/security/py-pymacaroons-pynacl
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	matrix-org
