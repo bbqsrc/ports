@@ -44,8 +44,11 @@ GH_PROJECT=	synapse
 USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 
-# Skip running python packaging and other dist tests
+TEST_TARGET=	test
+
 do-test:
-	@cd ${WRKSRC} && ${PYTHON_CMD} setup.py test -a "-epy27"
+	# -epy27 added to skip running python packaging and other dist tests
+	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} ${PYDISTUTILS_SETUP} ${TEST_TARGET} \
+		-a "-epy27")
 
 .include <bsd.port.mk>
