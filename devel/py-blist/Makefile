@@ -16,4 +16,12 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USES=		python:2.7+
 USE_PYTHON=	distutils autoplist
 
+TEST_TARGET=	test
+
+do-test:
+	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} ${PYDISTUTILS_SETUP} ${TEST_TARGET})
+
+post-install:
+	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/blist/*.so
+
 .include <bsd.port.mk>
