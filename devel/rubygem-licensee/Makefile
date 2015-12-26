@@ -17,6 +17,8 @@ BUILD_DEPENDS=	rubygem-pry>=0.9:${PORTSDIR}/devel/rubygem-pry \
 		rubygem-shoulda>=3.5:${PORTSDIR}/devel/rubygem-shoulda
 RUN_DEPENDS=	rubygem-rugged>=0.23:${PORTSDIR}/devel/rubygem-rugged
 
+PLIST_FILES+=	bin/licensee
+
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
