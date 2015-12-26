@@ -1,0 +1,24 @@
+# Created by: Brendan Molloy <brendan+freebsd@bbqsrc.net>
+# $FreeBSD$
+
+PORTNAME=	licensee
+PORTVERSION=	6.0.0
+CATEGORIES=	devel rubygems
+MASTER_SITES=	RG
+
+MAINTAINER=	brendan+freebsd@bbqsrc.net
+COMMENT=	Detects under what license a project is distributed
+
+LICENSE=	MIT
+
+BUILD_DEPENDS=	rubygem-pry>=0.9:${PORTSDIR}/devel/rubygem-pry \
+		rubygem-rake>=10.3:${PORTSDIR}/devel/rubygem-rake \
+		rubygem-ruby-prof>=0.15:${PORTSDIR}/devel/rubygem-ruby-prof \
+		rubygem-shoulda>=3.5:${PORTSDIR}/devel/rubygem-shoulda
+RUN_DEPENDS=	rubygem-rugged>=0.23:${PORTSDIR}/devel/rubygem-rugged
+
+USE_RUBY=	yes
+USE_RUBYGEMS=	yes
+RUBYGEM_AUTOPLIST=	yes
+
+.include <bsd.port.mk>
