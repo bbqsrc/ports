@@ -21,7 +21,8 @@ PLIST_FILES=	bin/unionfs \
 		bin/unionfsctl \
 		man/man8/unionfs.8.gz
 
-USES=		python:3.2+,test fuse cmake localbase
+USES=		fuse cmake localbase
+TEST_USES=	python3.2+,build
 
 post-patch:
 	@${REINPLACE_CMD} "s,share/man,man,g" ${WRKSRC}/man/CMakeLists.txt
