@@ -6,7 +6,6 @@ PORTVERSION=	1.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 PKGNAMEPREFIX=	fusefs-
-#DISTNAME=	unionfs-fuse-${PORTVERSION}
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net
 COMMENT=	FUSE based implementation of the well-known unionfs
@@ -27,6 +26,7 @@ post-patch:
 	@${REINPLACE_CMD} "s,share/man,man,g" ${WRKSRC}/man/CMakeLists.txt
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
+	${MV} ${STAGEDIR}${PREFIX}/man/man8/unionfs.8 ${STAGEDIR}${PREFIX}/man/man8/unionfs-fuse.8
 
 .include <bsd.port.mk>
