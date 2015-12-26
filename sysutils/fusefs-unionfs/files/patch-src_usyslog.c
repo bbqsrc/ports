@@ -1,4 +1,4 @@
---- src/usyslog.c.orig	2015-12-26 04:10:53 UTC
+--- src/usyslog.c.orig	2015-01-14 10:08:20 UTC
 +++ src/usyslog.c
 @@ -23,7 +23,7 @@
  
