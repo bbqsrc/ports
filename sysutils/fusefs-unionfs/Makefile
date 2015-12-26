@@ -18,7 +18,8 @@ GH_ACCOUNT=	rpodgorny
 GH_PROJECT=	unionfs-fuse
 
 PLIST_FILES=	bin/unionfs \
-		man/man8/unionfs-fuse.8.gz
+		bin/unionfsctl \
+		man/man8/unionfs.8.gz
 
 USES=		fuse cmake localbase
 
@@ -27,6 +28,5 @@ post-patch:
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
-	${MV} ${STAGEDIR}${PREFIX}/man/man8/unionfs.8 ${STAGEDIR}${PREFIX}/man/man8/unionfs-fuse.8
 
 .include <bsd.port.mk>
