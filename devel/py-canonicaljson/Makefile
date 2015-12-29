@@ -4,7 +4,7 @@
 PORTNAME=	canonicaljson
 PORTVERSION=	1.0.0
 DISTVERSIONPREFIX=	v
-CATEGORIES=	devel
+CATEGORIES=	devel python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net

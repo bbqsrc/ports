@@ -4,7 +4,7 @@
 PORTNAME=	pymacaroons-pynacl
 PORTVERSION=	0.9.3
 DISTVERSIONPREFIX=	v
-CATEGORIES=	security devel
+CATEGORIES=	security devel python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net
