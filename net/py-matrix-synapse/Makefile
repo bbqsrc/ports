@@ -48,4 +48,5 @@ do-test:
 	# -epy27 added to skip running python packaging and other dist tests
 	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} ${PYDISTUTILS_SETUP} ${TEST_TARGET} \
 		-a "-epy27")
+
 .include <bsd.port.mk>
