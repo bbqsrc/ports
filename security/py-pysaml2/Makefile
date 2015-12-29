@@ -13,7 +13,7 @@ COMMENT=	Python implementation of SAML Version 2
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest \
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:${PORTSDIR}/devel/py-pytest \
 		${PYTHON_PKGNAMEPREFIX}mock>0:${PORTSDIR}/devel/py-mock \
 		${PYTHON_PKGNAMEPREFIX}responses>0:${PORTSDIR}/devel/py-responses
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}decorator>0:${PORTSDIR}/devel/py-decorator \
@@ -32,6 +32,6 @@ USES=		python:2.7+
 USE_PYTHON=	distutils autoplist
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} py.test)
+	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} -m pytest)
 
 .include <bsd.port.mk>

@@ -12,7 +12,7 @@ COMMENT=	Friendlier RFC 6265-compliant cookie parser/renderer
 
 LICENSE=	MIT
 
-TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:${PORTSDIR}/devel/py-pytest
 
 USES=		python:2.7+
 USE_PYTHON=	distutils autoplist

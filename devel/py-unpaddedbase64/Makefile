@@ -13,7 +13,7 @@ COMMENT=	Unpadded Base64
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:${PORTSDIR}/devel/py-pytest
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	matrix-org
@@ -23,6 +23,6 @@ USES=		python:2.7+
 USE_PYTHON=	distutils autoplist
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} py.test)
+	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} -m pytest)
 
 .include <bsd.port.mk>

@@ -13,7 +13,7 @@ COMMENT=	Sign JSON with Ed25519 signatures
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:${PORTSDIR}/devel/py-pytest
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pynacl>=0.3.0:${PORTSDIR}/security/py-pynacl \
 			${PYTHON_PKGNAMEPREFIX}unpaddedbase64>=1.0.1:${PORTSDIR}/devel/py-unpaddedbase64 \
 			${PYTHON_PKGNAMEPREFIX}canonicaljson>=1.0.0:${PORTSDIR}/devel/py-canonicaljson
@@ -26,6 +26,6 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} py.test tests)
+	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} -m pytest tests)
 
 .include <bsd.port.mk>
