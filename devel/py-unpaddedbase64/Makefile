@@ -13,11 +13,11 @@ COMMENT=	Unpadded Base64
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	matrix-org
 GH_PROJECT=	python-unpaddedbase64
-
-TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
 
 USES=		python:2.7+
 USE_PYTHON=	distutils autoplist

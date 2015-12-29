@@ -13,11 +13,11 @@ COMMENT=	Canonical JSON
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	matrix-org
 GH_PROJECT=	python-canonicaljson
-
-TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
 
 USES=		python
 USE_PYTHON=	distutils autoplist

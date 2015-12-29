@@ -18,9 +18,9 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pynacl>=0.3.0:${PORTSDIR}/security/py-pyna
 TEST_DEPENDS=	nosetests:${PORTSDIR}/devel/py-nose \
 			${PYTHON_PKGNAMEPREFIX}hypothesis>0:${PORTSDIR}/devel/py-hypothesis
 
-USE_GITHUB=     yes
-GH_ACCOUNT=     matrix-org
-GH_PROJECT=     pymacaroons
+USE_GITHUB=	yes
+GH_ACCOUNT=	matrix-org
+GH_PROJECT=	pymacaroons
 
 USES=		python:2.7+
 USE_PYTHON=	distutils autoplist

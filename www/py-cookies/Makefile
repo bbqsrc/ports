@@ -10,9 +10,9 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	brendan+freebsd@bbqsrc.net
 COMMENT=	Friendlier RFC 6265-compliant cookie parser/renderer
 
-TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
-
 LICENSE=	MIT
+
+TEST_DEPENDS=	py.test:${PORTSDIR}/devel/py-pytest
 
 USES=		python:2.7+
 USE_PYTHON=	distutils autoplist
