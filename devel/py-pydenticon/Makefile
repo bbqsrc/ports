@@ -18,7 +18,6 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mock>0:${PORTSDIR}/devel/py-mock
 USES=		python
 USE_PYTHON=	autoplist distutils
 
-
 do-test:
 	@(cd ${WRKSRC} && ${PYTHON_CMD} ${PYDISTUTILS_SETUP} test)
 
