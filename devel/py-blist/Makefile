@@ -13,13 +13,11 @@ COMMENT=	Drop-in list replacement with better performance for large lists
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		python:2.7+
-USE_PYTHON=	distutils autoplist
-
-TEST_TARGET=	test
+USES=		python
+USE_PYTHON=	autoplist distutils
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} ${PYDISTUTILS_SETUP} ${TEST_TARGET})
+	@(cd ${WRKSRC} && ${PYTHON_CMD} ${PYDISTUTILS_SETUP} test)
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/blist/*.so
