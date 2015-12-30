@@ -13,7 +13,7 @@ COMMENT=	Enables code to run as a daemon process on Unix-like systems
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		python:2.7+
-USE_PYTHON=	distutils autoplist
+USES=		python
+USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.mk>

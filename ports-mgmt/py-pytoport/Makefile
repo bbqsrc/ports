@@ -18,6 +18,6 @@ GH_ACCOUNT=	freebsd
 GH_PROJECT=	pytoport
 
 USES=		python:3.2+
-USE_PYTHON=	distutils autoplist
+USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.mk>

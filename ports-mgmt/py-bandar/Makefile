@@ -23,6 +23,6 @@ GH_PROJECT=	bandar
 GH_TAGNAME=	033e07e
 
 USES=		python:3.2+
-USE_PYTHON=	distutils autoplist
+USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.mk>

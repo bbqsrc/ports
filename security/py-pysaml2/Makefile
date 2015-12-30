@@ -28,10 +28,10 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}decorator>0:${PORTSDIR}/devel/py-decorator \
 		${PYTHON_PKGNAMEPREFIX}six>0:${PORTSDIR}/devel/py-six \
 		xmlsec1:${PORTSDIR}/security/xmlsec1
 
-USES=		python:2.7+
-USE_PYTHON=	distutils autoplist
+USES=		python
+USE_PYTHON=	autoplist distutils
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} -m pytest)
+	@(cd ${WRKSRC} && ${PYTHON_CMD} -m pytest)
 
 .include <bsd.port.mk>

@@ -22,10 +22,10 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	matrix-org
 GH_PROJECT=	pymacaroons
 
-USES=		python:2.7+
-USE_PYTHON=	distutils autoplist
+USES=		python
+USE_PYTHON=	autoplist distutils
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} nosetests)
+	@(cd ${WRKSRC} && nosetests)
 
 .include <bsd.port.mk>

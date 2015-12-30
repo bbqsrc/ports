@@ -19,7 +19,7 @@ RUN_DEPENDS=	${PYTHON_SITELIBDIR}/msgpack/__init__.py:${PORTSDIR}/devel/py-msgpa
 
 USES=		cpe python:3.2+
 USE_OPENSSL=	yes
-USE_PYTHON=	distutils autoplist
+USE_PYTHON=	autoplist distutils
 
 post-install:
 .for l in chunker compress crypto hashindex platform_freebsd

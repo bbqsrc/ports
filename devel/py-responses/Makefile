@@ -15,7 +15,7 @@ LICENSE=	APACHE20
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>2.0.0:${PORTSDIR}/www/py-requests \
 		${PYTHON_PKGNAMEPREFIX}cookies>0:${PORTSDIR}/www/py-cookies
 
-USES=		python:2.7+
-USE_PYTHON=	distutils autoplist
+USES=		python
+USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.mk>

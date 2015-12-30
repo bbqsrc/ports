@@ -18,13 +18,13 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:${PORTSDIR}/devel/py-pytest
 LIB_DEPENDS=	libsodium.so:${PORTSDIR}/security/libsodium
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cffi>0:${PORTSDIR}/devel/py-cffi
 
-USES=		python:2.7+
-USE_PYTHON=	distutils autoplist
+USES=		python
+USE_PYTHON=	autoplist distutils
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/nacl/_lib/*.so
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} -m pytest tests)
+	@(cd ${WRKSRC} && ${PYTHON_CMD} -m pytest tests)
 
 .include <bsd.port.mk>
