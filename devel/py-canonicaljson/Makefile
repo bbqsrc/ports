@@ -20,9 +20,9 @@ GH_ACCOUNT=	matrix-org
 GH_PROJECT=	python-canonicaljson
 
 USES=		python
-USE_PYTHON=	distutils autoplist
+USE_PYTHON=	autoplist distutils
 
 do-test:
-	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} -m pytest)
+	@(cd ${WRKSRC} && ${PYTHON_CMD} -m pytest)
 
 .include <bsd.port.mk>
